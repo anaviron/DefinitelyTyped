@@ -1,7 +1,8 @@
-// Type definitions for statsd-client v0.4.0
-// Project: https://github.com/msiebuhr/node-statsd-client
+// Type definitions for statsd-client v0.5.3
+// Project: https://github.com/anaviron/node-statsd-client
 // Definitions by: Peter Kooijmans <https://github.com/peterkooijmans>
 //                 Christopher Eck <https://github.com/chrisleck>
+//                 Ron Anavi       <https://github.com/anaviron>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
@@ -42,6 +43,11 @@ interface CommonOptions {
      * have elapsed without activity.
      */
     socketTimeout?: number;
+    
+    /**
+     * User specifically wants to use statsd in librato format
+     */
+    libratoTags?: boolean
 }
 
 interface TcpOptions extends CommonOptions {
@@ -135,6 +141,8 @@ declare class StatsdClient {
     getChildClient(name: string): StatsdClient;
 
     formatTags(tags?: Tags): string;
+
+    formatLibratoTags(tags?: Tags): string;
 
     helpers: {
         getExpressMiddleware(prefix?: string, options?: ExpressMiddlewareOptions): express.RequestHandler;

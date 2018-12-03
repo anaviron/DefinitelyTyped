@@ -1,7 +1,7 @@
 
 import SDC = require("statsd-client");
 
-let sdc = new SDC( { host: 'statsd.example.com' });
+let sdc = new SDC( { host: 'statsd.example.com', libratoTags: true });
 
 const timer = new Date();
 sdc.increment('some.counter'); // Increment by one.
